@@ -1,102 +1,149 @@
 package Interface;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import java.awt.Insets;
+
 import javax.swing.JButton;
-import java.awt.GridLayout;
-import javax.swing.JTextArea;
-import java.awt.FlowLayout;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.border.EtchedBorder;
+
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 
 public class AppGUI {
-	
-public static void main(String[] args) {
-    	
-    	//Create JFrame/Panel and set layout to Grid.
-        JFrame frame = new JFrame("Translator Application");
-        frame.setBackground(Color.DARK_GRAY);
-        frame.getContentPane().setBackground(Color.DARK_GRAY);
-        frame.setSize(500, 400);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        JPanel gridPanel = new JPanel(new GridLayout(6, 1));
-        gridPanel.setBackground(Color.DARK_GRAY);
-        
-        
-        //Blank panel for aesthetics.
-        JPanel blankPanel = new JPanel();
-        blankPanel.setBackground(Color.DARK_GRAY);
-        
-        
-        //Create a panel for the input text box.
-        JPanel textInputPanel = new JPanel();
-        textInputPanel.setBackground(Color.DARK_GRAY);
-        textInputPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-        JTextArea inputArea = new JTextArea();
-        inputArea.setTabSize(5);
-        inputArea.setRows(4);
-        inputArea.setColumns(35);
-        textInputPanel.add(inputArea);
-        
-        
-        // Create a panel for the combo boxes.
-        JPanel comboBoxPanel = new JPanel();
-        comboBoxPanel.setBackground(Color.DARK_GRAY);
-        comboBoxPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 70, 25));
-        
-        JComboBox comboBoxFrom = new JComboBox();
-        comboBoxFrom.addItem("From");
-        comboBoxFrom.setMaximumRowCount(300);
-        comboBoxPanel.add(comboBoxFrom);
-        
-        JComboBox comboBoxTo = new JComboBox();
-        comboBoxTo.addItem("To");
-        comboBoxTo.setMaximumRowCount(300);
-        comboBoxPanel.add(comboBoxTo);
-        
-                
-        // Create a panel for the output text box.
-        JPanel textOutputPanel = new JPanel();
-        textOutputPanel.setBackground(Color.DARK_GRAY);
-        textOutputPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-        JTextArea outputArea = new JTextArea();
-        outputArea.setEditable(false);
-        outputArea.setRows(4);
-        outputArea.setColumns(35);
-        textOutputPanel.add(outputArea);
-        
-        
-        // Create a panel for the buttons "close" and "translate".
-        JPanel translatePanel = new JPanel();
-        translatePanel.setBackground(Color.DARK_GRAY);
-        FlowLayout flowLayout = (FlowLayout) translatePanel.getLayout();
-        flowLayout.setHgap(0);
-        flowLayout.setVgap(25);
-        JButton translateButton = new JButton("Translate");
-        translatePanel.add(translateButton);
-        
-        
-        JPanel closePanel = new JPanel();
-        closePanel.setBackground(Color.DARK_GRAY);
-        FlowLayout flowLayout_1 = (FlowLayout) closePanel.getLayout();
-        flowLayout_1.setVgap(30);
-        flowLayout_1.setAlignment(FlowLayout.RIGHT);
-        JButton closeButton = new JButton("Close");
-        closePanel.add(closeButton);
-        
-        
-        //Add all of the above panels to the Pane in order.
-        gridPanel.add(blankPanel);
-        gridPanel.add(textInputPanel);
-        gridPanel.add(comboBoxPanel);
-        gridPanel.add(textOutputPanel);
-        gridPanel.add(translatePanel);
-        gridPanel.add(closePanel);
 
-        
-        // Add the grid panel to the frame + sets position and visibility. 
-        frame.getContentPane().add(gridPanel);
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
-    }
+	/**
+	 * @wbp.parser.entryPoint
+	 */
+
+	public static void main(String[] args) {
+
+		JFrame welcomeF = new JFrame("Text Translator");
+		welcomeF.setSize(700, 500);
+
+		JPanel welcomeP = new JPanel(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
+
+		welcomeF.add(welcomeP);
+
+		// Title
+		JLabel welcomeLbl = new JLabel("Text Translator", JLabel.CENTER);
+		c.weightx = 1;
+		c.weighty = 0.1;
+		c.fill = GridBagConstraints.BOTH;
+		c.gridx = 0;
+		c.gridy = 0;
+		c.gridwidth = 2;
+		c.insets = new Insets(0, 0, 0, 0);
+		welcomeLbl.setOpaque(true);
+		welcomeLbl.setBackground(Color.decode("#333333"));
+		welcomeLbl.setForeground(Color.white);
+		welcomeLbl.setFont(new Font("Nirmala UI", Font.BOLD, 25));
+		welcomeP.add(welcomeLbl, c);
+
+		// Welcome text
+		JLabel subLbl = new JLabel("Simply enter you text below and select your language to translate.", JLabel.CENTER);
+		c.weightx = 0;
+		c.weighty = 0.05;
+		c.fill = GridBagConstraints.BOTH;
+		c.gridx = 0;
+		c.gridy = 1;
+		c.gridwidth = 2;
+		subLbl.setOpaque(true);
+		subLbl.setBackground(Color.decode("#404040"));
+		subLbl.setForeground(Color.white);
+		subLbl.setFont(new Font("Nirmala UI", Font.PLAIN, 14));
+		c.insets = new Insets(0, 0, 10, 0);
+		welcomeP.add(subLbl, c);
+
+		// Dropdown 1 (Left)
+		JComboBox toCB = new JComboBox();
+		c.weightx = 1;
+		c.weighty = 0;
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.gridx = 1;
+		c.gridy = 2;
+		c.gridwidth = 1;
+		toCB.setFont(new Font("Nirmala UI", Font.PLAIN, 12));
+		toCB.addItem("To");
+		welcomeP.add(toCB, c);
+
+		// Dropdown 2 (Right)
+		JComboBox fromCB = new JComboBox();
+		c.weightx = 1;
+		c.weighty = 0;
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.gridx = 0;
+		c.gridy = 2;
+		c.gridwidth = 1;
+		fromCB.setFont(new Font("Nirmala UI", Font.PLAIN, 12));
+		fromCB.addItem("From");
+		welcomeP.add(fromCB, c);
+
+		// TextArea (Left)
+		JTextArea toTXT = new JTextArea();
+		c.weightx = 1;
+		c.weighty = 1;
+		c.fill = GridBagConstraints.BOTH;
+		c.gridx = 0;
+		c.gridy = 3;
+		c.gridwidth = 1;
+		toTXT.setBorder(new EtchedBorder(EtchedBorder.RAISED));
+		welcomeP.add(toTXT, c);
+
+		// TextArea (Right)
+		JTextArea fromTXT = new JTextArea();
+		c.weightx = 1;
+		c.weighty = 1;
+		c.fill = GridBagConstraints.BOTH;
+		c.gridx = 1;
+		c.gridy = 3;
+		c.gridwidth = 1;
+		fromTXT.setBorder(new EtchedBorder(EtchedBorder.RAISED));
+		welcomeP.add(fromTXT, c);
+
+		// Translate Button
+		JButton translateBTN = new JButton("Translate");
+		c.weightx = 1;
+		c.weighty = 0;
+		c.anchor = GridBagConstraints.CENTER;
+		c.fill = GridBagConstraints.CENTER;
+		c.gridx = 0;
+		c.gridy = 4;
+		c.gridwidth = 2;
+		translateBTN.setFont(new Font("Nirmala UI", Font.BOLD, 16));
+		translateBTN.setPreferredSize(new Dimension(200, 30));
+		c.insets = new Insets(0, 0, 5, 0);
+		welcomeP.add(translateBTN, c);
+
+		// Close Button
+		JButton closeBTN = new JButton("Close");
+		c.weightx = 1;
+		c.weighty = 0;
+		c.anchor = GridBagConstraints.SOUTHEAST;
+		c.gridx = 1;
+		c.gridy = 5;
+		c.insets = new Insets(10, 0, 5, 0);
+		closeBTN.setFont(new Font("Nirmala UI", Font.BOLD, 12));
+		c.gridwidth = 1;
+		welcomeP.add(closeBTN, c);
+		closeBTN.addActionListener(e -> {
+			welcomeF.dispose();
+		}
+
+		);
+
+		welcomeF.setVisible(true);
+		welcomeF.setLocationRelativeTo(null);
+		welcomeP.setVisible(true);
+		welcomeF.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+	}
+
 }
