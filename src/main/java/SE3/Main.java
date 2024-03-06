@@ -9,5 +9,6 @@ public class Main {
     	System.setProperty("freetts.voices", "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory");
         //Create the GUI
     	new AppGUI();
+        //test
     }
 }
