@@ -72,6 +72,11 @@ public class AppGUI {
         c.gridwidth = 1;
         toCB.setFont(new Font("Nirmala UI", Font.PLAIN, 12));
         toCB.addItem("To");
+        toCB.addItem("English");
+        toCB.addItem("Spanish");
+        toCB.addItem("French");
+        toCB.addItem("italian");
+        toCB.addItem("chinese");
         welcomeP.add(toCB, c);
 
         // Dropdown 2 (Right)
@@ -84,6 +89,11 @@ public class AppGUI {
         c.gridwidth = 1;
         fromCB.setFont(new Font("Nirmala UI", Font.PLAIN, 12));
         fromCB.addItem("From");
+        fromCB.addItem("English");
+        fromCB.addItem("Spanish");
+        fromCB.addItem("French");
+        fromCB.addItem("italian");
+        fromCB.addItem("chinese");
         welcomeP.add(fromCB, c);
 
         // TextArea (Left)
