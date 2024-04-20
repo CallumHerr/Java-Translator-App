@@ -7,6 +7,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.border.EtchedBorder;
 
@@ -96,8 +97,13 @@ public class AppGUI {
         fromCB.addItem("chinese");
         welcomeP.add(fromCB, c);
 
-        // TextArea (Left)
+        // TextArea(Left)
         JTextArea toTXT = new JTextArea();
+        toTXT.setLineWrap(true);
+
+        // Scrollbar for TextArea(left)
+        JScrollPane scrollBarTo = new JScrollPane(toTXT, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+                JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         c.weightx = 1;
         c.weighty = 1;
         c.fill = GridBagConstraints.BOTH;
@@ -105,10 +111,15 @@ public class AppGUI {
         c.gridy = 3;
         c.gridwidth = 1;
         toTXT.setBorder(new EtchedBorder(EtchedBorder.RAISED));
-        welcomeP.add(toTXT, c);
+        welcomeP.add(scrollBarTo, c);
 
         // TextArea (Right)
         JTextArea fromTXT = new JTextArea();
+        fromTXT.setLineWrap(true);
+
+        // Scrollbar for TextArea(left)
+        JScrollPane scrollBarFrom = new JScrollPane(fromTXT, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+                JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         c.weightx = 1;
         c.weighty = 1;
         c.fill = GridBagConstraints.BOTH;
@@ -116,7 +127,7 @@ public class AppGUI {
         c.gridy = 3;
         c.gridwidth = 1;
         fromTXT.setBorder(new EtchedBorder(EtchedBorder.RAISED));
-        welcomeP.add(fromTXT, c);
+        welcomeP.add(scrollBarFrom, c);
 
         // Translate Button
         JButton translateBTN = new JButton("Translate");
@@ -144,8 +155,8 @@ public class AppGUI {
         c.gridwidth = 1;
         welcomeP.add(closeBTN, c);
         closeBTN.addActionListener(e -> {
-                    welcomeF.dispose();
-                }
+            welcomeF.dispose();
+        }
 
         );
 
