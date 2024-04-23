@@ -6,6 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -142,6 +143,17 @@ public class AppGUI {
         translateBTN.setPreferredSize(new Dimension(200, 30));
         c.insets = new Insets(0, 0, 5, 0);
         welcomeP.add(translateBTN, c);
+        
+        ButtonListener transBtnListener;
+		try {
+			transBtnListener = new ButtonListener(fromCB, toCB, toTXT, fromTXT);
+		} catch (Exception e1) {
+			JOptionPane.showMessageDialog(null, "Something went wrong please try again.");
+			welcomeF.dispose();
+			e1.printStackTrace();
+			return;
+		}
+        translateBTN.addActionListener(transBtnListener);
 
         // Close Button
         JButton closeBTN = new JButton("Close");
