@@ -77,8 +77,7 @@ public class AppGUI {
         toCB.addItem("English");
         toCB.addItem("Spanish");
         toCB.addItem("French");
-        toCB.addItem("italian");
-        toCB.addItem("chinese");
+        toCB.addItem("Italian");
         welcomeP.add(toCB, c);
 
         // Dropdown 2 (Right)
@@ -94,8 +93,7 @@ public class AppGUI {
         fromCB.addItem("English");
         fromCB.addItem("Spanish");
         fromCB.addItem("French");
-        fromCB.addItem("italian");
-        fromCB.addItem("chinese");
+        fromCB.addItem("Italian");
         welcomeP.add(fromCB, c);
 
         // TextArea(Left)
