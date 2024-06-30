@@ -6,7 +6,7 @@ public class Translate {
 
     // constructor:
     public Translate() throws Exception {
-        String authKey = "f34e8900-7184-4dfe-a243-88a721be8292:fx"; //authentication Key from Deepl. Replace with reference to file instead.
+        String authKey = ""; //authentication Key from Deepl. Replace with reference to file instead.
         translator = new Translator(authKey);
     }
 
